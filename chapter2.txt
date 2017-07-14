@@ -1,0 +1,75 @@
+Chapter2
+2.1 main()をどう定義するか
+2.11. mainメソッドの一例
+main()の中身はシミュレーションの内容によって変わるが、ユーザーによって定義されなければならない。またGeant4はmain()を与えないが、一例をここで紹介する。例2.1は最も簡素なmainメソッドの一例である。
+
+ #include "G4RunManager.hh"
+ #include "G4UImanager.hh"
+
+ #include "ExG4DetectorConstruction01.hh"
+ #include "ExG4PhysicsList00.hh"
+ #include "ExG4ActionInitialization01.hh"
+
+ int main()
+ {
+   // construct the default run manager
+   G4RunManager* runManager = new G4RunManager;
+
+   // set mandatory initialization classes
+   runManager->SetUserInitialization(new ExG4DetectorConstruction01);
+   runManager->SetUserInitialization(new ExG4PhysicsList00);
+   runManager->SetUserInitialization(new ExG4ActionInitialization01);
+
+   // initialize G4 kernel
+   runManager->Initialize();
+
+   // get the pointer to the UI manager and set verbosities
+   G4UImanager* UI = G4UImanager::GetUIpointer();
+   UI->ApplyCommand("/run/verbose 1");
+   UI->ApplyCommand("/event/verbose 1");
+   UI->ApplyCommand("/tracking/verbose 1");
+
+   // start a run
+   int numberOfEvent = 3;
+   runManager->BeamOn(numberOfEvent);
+
+   // job termination
+   delete runManager;
+   return 0;
+ }
+
+mainメソッドは2つのツールキットクラスG4RunManagerとG4UImanagerと3つのクラスExG4DetectorConstruction01, ExG4PhisicsList00, ExG4ActionInitialization01を実装している。
+以下のセッションではそれぞれのクラスについて説明する。
+
+2.1.2 G4RunManager
+初めにmain内でやらなければならないことはG4RunManagerのインスタンスを生成することである。これはmain関数内で明示的に生成しなければならない唯一のマネージャークラスである。
+このクラスはプログラムの流れをコントロールし、動作中のイベントループを管理する。マルチスレッドに対応している場合、G4RunManagerの代わりにG4MTRunManagerクラスを使用するべきである。
+
+G4RunManagerインスタンスが生成されると、ほかのマネージャークラスも生成される。これらはG4RunManagerとともにデストラクトされる。
+ランマネージャーはユーザーの初期化クラスのメソッドを含めた初期化手続きも担っている。ユーザーはこれらのランマネージャーにビルド、ランに必要なすべての情報を与えなければならない。与える情報はおおまかに以下のものが挙げられる。
+
+1.  検出器をどのように設置するか。
+2.	すべての粒子、すべての物理現象についてシミュレーションするか。
+3.	一番初めの粒子はどのように与えられるか。
+4.	その他必要事項
+
+mainでは、以下の行
+ runManager->SetUserInitialization(new ExG4DetectorConstruction01);
+ runManager->SetUserInitialization(new ExG4PhysicsList00);
+ runManager->SetUserInitialization(new ExG4ActionInitialization01);
+でそれぞれ定義している。
+
+
+ExG4DetectorConstruction01クラスはG4VUserDetectorConstructionクラスを継承した初期化クラスの一例である。このクラスでは、
+1.	形状
+2.	材質
+3.	検知領域
+4.	検知領域の読み出し法
+についてユーザーが定義しなければならない。
+同様に、ExG4PhysicsList01はG4VUserPhisicsListを継承したクラスで、
+1.	シミュレーションで使う粒子の種類
+2.	シミュレーションするすべての物理現象
+3.	粒子のエネルギーのカット領域
+について定義する。
+ExG4ActionInitialization01クラスもまたG4VUserActionInitializationクラスを継承し、
+1.	シミュレーションの際の
