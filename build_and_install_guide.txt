@@ -1,10 +1,11 @@
 ・Geant4 build&install ガイド
-概要：CERNのインストールガイドの手順の抜粋
+
+概要：CERNのGeant4インストールガイドの手順の抜粋
 http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/index.html
 *これから説明する方法でwindowsにgeant4をインストールした場合、描写ソフトであるOPENGLの挙動に不安定な部分が
 みられるため、ほかの描写ソフト(Qtなど)を使うことも視野に入れたほうが良いかもしれない。
 
-geant4をwindowsにインストールする場合、動作確認がされているOSとvisualstudioのversionの組み合わせは
+geant4をwindowsにインストールする場合、動作確認がされているOSとvisual studioのversionの組み合わせは
 ・Windows 7, 10 with Visual Studio 2015, 32/64bit.
 となっている。しかしwindows 10とvisual studio 2017 64bitの組み合わせでも動作確認ができた。
 
@@ -42,8 +43,9 @@ C:\Users\YourUsername\Geant4\geant4_10_03
 
 3. 次にビルドを行う。cmakeの引数に渡すオプションは以下に示されている。
 http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/ch02s03.html#sect.StandardOptions
+
 ここでは最低限のオプションのみ設定する。設定するのは、
-  ・CMAKE_INSTALL_PREFIX ----- インストール先
+  ・CMAKE_INSTALL_PREFIX ----- インストール先(絶対パス)
   ・GEANT4_INSTALL_DATA ------ データファイルのDL
   ・GEANT4_USE_OPENGL_WIN32 -- 標準の描写ソフトとしてOPENGLを設定
 の3つである。
@@ -57,7 +59,8 @@ http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide
   > cmake --build . --config Release --target install
 としインストールを行う。
 
-4. 次に環境変数の設定を行う。設定を行わないとデータセットが見つからずにコンパイルに失敗する。
+4. 次に環境変数の設定を行う。
+次の設定を行わないとデータセットが見つからずにコンパイルに失敗する。
 パスを通すデータセットは、
  %HOMEPATH%\Geant4\geant4_10_03-install\share\Geant4-10.3.1\data
 にある。geant4のversion等により違う場所にあるかもしれないが、その際は適宜読み替えてほしい。
@@ -84,6 +87,19 @@ http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide
   ・G4ENSDFSTATEDATA
   Set to the path to the G4ENSDFSTATE2.1 dataset.
 
-例えばG4LEDATAという変数名でG4EMLOW6.50フォルダを登録するという具合にすべてのデータセットについてパスを登録する。
+例えばG4LEDATAという変数名でG4EMLOW6.50フォルダを登録するという具合にすべてのデータセットについてパスを通す。
+またユーザー変数PATHに
+  %HOMEPATH%\Geant4\geant4_10_03-install\bin
+を追加しておく。
 
-5.
+5. シミュレーションの実行
+上記の通りに進めていくと、
+  %HOMEPATH%\Geant4\geant4_10_03-install\share\Geant4-10.3.1\examples\basic
+にサンプルプログラムがあるはずなので、それらをコンパイルしgeant4が正しくインストールされているかどうか確認する。
+  > cd %HOMEPATH%\Geant4
+  > mkdir B1-build
+  > cd %HOMEPATH%\Geant4\B1-build
+  > cmake -DGeant4_DIR=%HOMEPATH%\geant4_10_03-install\lib\Geant4-10.3.0 %HOMEPATH%\Geant4\geant4_10_03-install\share\Geant4-10.3.1\examples\basic\B1
+  > cmake --build . --config Release
+  >.\Release\exampleB1.exe
+でOPENGLが起動しcmdがIdle状態になればインストールが正しくできている。/run/beamOn 等のコマンドを打ち正しく動作されているかを確認する。
