@@ -96,6 +96,7 @@ http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide
 上記の通りに進めていくと、
   %HOMEPATH%\Geant4\geant4_10_03-install\share\Geant4-10.3.1\examples\basic
 にサンプルプログラムがあるはずなので、それらをコンパイルしgeant4が正しくインストールされているかどうか確認する。
+これら通常のcmdではなく、1.で用いたvisual studioのcmdで行う。
   > cd %HOMEPATH%\Geant4
   > mkdir B1-build
   > cd %HOMEPATH%\Geant4\B1-build
