@@ -3,7 +3,7 @@
 #### 概要：CERNのGeant4インストールガイドの手順の抜粋
 [link](http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/index.html)  
 ***
-- これから説明する方法でwindowsにgeant4をインストールした場合、描写ソフトであるOPENGLの挙動に不安定な部分が
+これから説明する方法でwindowsにgeant4をインストールした場合、描写ソフトであるOPENGLの挙動に不安定な部分が
 みられるため、ほかの描写ソフト(Qtなど)を使うことも視野に入れたほうが良いかもしれない。
 ***
 
