@@ -22,25 +22,53 @@ G4AnalysisManagerの機能に加え、ヒストグラムの生成やそれらの
 Geant4で解析をするためには、分析マネージャのインスタンスを生成しなければならない。分析マネージャーのオブジェクトはG4AnalysisManager::Instance()の最初の呼び出しによって生成され、次の呼び出しで分析マネージャーのオブジェクトへのポインタを提供する。クライアントのコードは、私たちの例のRunActionのデストラクタおいてされていること、すなわちオブジェクトの消去に対して責任を負う。
 
 basic 例B4から抜粋した分析マネージャーの生成のコードの一例を以下に示す。
-
->  #include "B4Analysis.hh"  
-B4RunAction::B4RunAction()  
- : G4UserRunAction()  
-{  
-  // Create analysis manager  
-  auto analysisManager =   G4AnalysisanalysisManagerager::Instance();  
-  analysisManager->SetVerboseLevel(1);  
-  analysisManager->SetFirstHistoId(1);  
-}  
-B4RunAction::~B4RunAction()  
-{  
-  delete G4AnalysisManager::Instance();    
-}  
-
+```C++
+#include "B4Analysis.hh"  
+>   
+> B4RunAction::B4RunAction()  
+>  : G4UserRunAction()  
+> {  
+// Create analysis manager  
+auto analysisManager = G4AnalysisanalysisManagerager::Instance();  
+analysisManager->SetVerboseLevel(1);  
+analysisManager->SetFirstHistoId(1);  
+}
+B4RunAction::~B4RunAction()
+{
+delete G4AnalysisManager::Instance();  
+}
+```
 必須ではないが、分析マネージャーをユーザーのRunActionのコンストラクタで生成し、デストラクタで消去することをお勧めする。このことはマルチスレッドでのシミュレーションの振る舞いを保証するものである。出力形式の選択が行われているB4Analysis.hhにおいて、出力形式の特定のコードは隠されている。
-> #ifndef B4Analysis_h  
-> #define B4Analysis_h 1  
-> #include "g4root.hh"  
-> //#include "g4xml.hh"  
-> //#include "g4csv.hh"  
-> #endif  
+
+```C++
+#ifndef B4Analysis_h  
+#define B4Analysis_h 1  
+#include "g4root.hh"  
+//#include "g4xml.hh"  
+//#include "g4csv.hh"  
+#endif  
+```
+情報の表示のレベルは、SetVerboseLevel(G4 int)によって設定することができる。デフォルトは0で4までサポートされている。
+
+詳細のレベルはUIコマンドを通じても設定することができる。
+
+### 9.2.2. Files handling
+分析マネージャーは一度に位置ファイルしか取り扱うことができない。以下にbasicの例B4から抜粋されたファイルをオープニング、クロージングする一例を示す。
+```C++
+#include "B4Analysis.hh"  
+void B4RunAction::BeginOfRunAction(const G4Run* run)  
+{  
+// Get analysis manager  
+auto analysisManager = G4AnalysisanalysisManagerager::Instance();  
+// Open an output file  
+analysisManager->OpenFile("B4");  
+}  
+void B4RunAction::EndOfRunAction(const G4Run* aRun)  
+{  
+// Save histograms  
+auto analysisManager = G4AnalysisanalysisManagerager::Instance();  
+analysisManager->Write();  
+analysisManager->CloseFile();  
+}  
+
+```
