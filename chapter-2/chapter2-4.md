@@ -4,31 +4,35 @@ G4VUserPhisicsListは2.1節で述べたように必須のユーザークラス�
 またこのクラスではカットオフパラメータも定義されなければならない。
 
 ユーザーはG4VUserPhysicsListを継承し、以下の仮想関数を実装しなければならない。
-  > ConstructParticle() //construct of particles  
-  ConstructProcess() //construct process and register them to particles  
-
+```C++
+ConstructParticle() //construct of particles  
+ConstructProcess() //construct process and register them to particles  
+```
 ユーザーは次のデフォルトの仮想関数をオーバーライドしたいかもしれない。
-  > SetCuts()
-
+```C++
+SetCuts()
+```
 この節ではConstruct()とSetcuts()メソッドの簡単な例を示す。
 ConstructPartcle()の情報は2.5節で紹介する。
 
 ### 2.4.1 Particle Definition
 geant4ではシミュレーションにおいて様々な種類の粒子を提供する。
-  > 電子やプロトンやガンマ線のような通常の粒子、電磁波  
-  ベクターメゾンやデルタバリオンのような寿命の短い共鳴粒子  
-  重水素、アルファ粒子、重イオンのような核種  
-  クオーク、ダイクオーク、グルーオン  
+
+ > 電子やプロトンやガンマ線のような通常の粒子、電磁波  
+ > ベクターメゾンやデルタバリオンのような寿命の短い共鳴粒子  
+ > 重水素、アルファ粒子、重イオンのような核種  
+ > クオーク、ダイクオーク、グルーオン  
 
 それぞれの粒子は自身のクラスごとに代表され、G4ParicleDeifnitionクラスを継承する。
 (例外：G4Ionsは全ての重粒子を表現する、詳しくは5.3節を見よ)
 粒子は以下の6つのカテゴリーに分類される。
-  > レプトン  
-  メゾン  
-  バリオン  
-  ボソン  
-  短寿命  
-  イオン  
+
+ > レプトン  
+ > メゾン  
+ > バリオン  
+ > ボソン  
+ > 短寿命  
+ > イオン  
 
 それぞれの粒子はディレクトリ /genat4/source/particle で定義されている。
 
@@ -43,7 +47,7 @@ G4ParticlePropertyTableクラスはG4ParticlePropertyDataからG4ParticlDefiniti
 このオブジェクトはそれぞれのクラスのクラスメソッドを使うことでアクセスできる。
 このルールには例外がある、5.3節を見よ。
 
-例えばG4Electron1クラスは電子を表現し、そのメンバーであるG4Electron::theInstance はそのオブジェクトのみを指す。
+例えばG4Electronクラスは電子を表現し、そのメンバーであるG4Electron::theInstance はそのオブジェクトのみを指す。
 このオブジェクトへのポインタはクラスメソッドであるG4Electron::ElectronDefinition(), G4Electron::Definition()
 を通して操作可能である。
 
@@ -55,18 +59,19 @@ G4ParticlePropertyTableクラスはG4ParticlePropertyDataからG4ParticlDefiniti
 #### 2.4.1.3 Dictionary of particles
 G4ParticleTableクラスは粒子を辞書として提供する。
 以下のような便利なメソッドが提供されている。
-  > FindParticle(G4String name);         // find the  particle by name  
-  FindParticle(G4int PDGencoding)      // find the particle by PDG encoding .  
-
+```C++
+FindParticle(G4String name);         // find the  particle by name  
+FindParticle(G4int PDGencoding)      // find the particle by PDG encoding .  
+```
 G4ParticleDefinitionクラスはシングルトンオブジェクトとして定義され、G4ParitcleTable::GetParticleTable()メソッド
 をそのポインタを提供する。
 重イオンの場合、そのオブジェクトはユーザーとプロセスからの要求によって動的に生成される。
 G4ParticleTableクラスは以下のようなイオンを生成するメソッドを提供する。
-
- > G4ParticleDefinition* GetIon(  G4int    atomicNumber,
+```C++
+G4ParticleDefinition* GetIon(  G4int    atomicNumber,
                                G4int    atomicMass,
                                G4double   excitationEnergy);
-
+```
 粒子は構築の最中に自動的に登録される。ユーザーには粒子を登録すること以上のことをする権限はない。
 
 #### 2.4.1.4 Constructing particle
@@ -78,33 +83,34 @@ ConstructParticle()はユーザーが要求するすべての粒子のクラス�
 例として、プロトンとジアンティーノが必要であるとしよう。
 ジアンティーノは全ての物質と相互作用しない仮想的な粒子である。
 ConstructParticle()メソッドを以下のように実装する。
-
-> Example 2.14.  Construct a proton and a geantino.  
+```C++
+Example 2.14.  Construct a proton and a geantino.  
  void MyPhysicsList::ConstructParticle()  
  {   
    G4Proton::ProtonDefinition();  
    G4Geantino::GeantinoDefinition();  
  }  
-
+```
 geant4ではあまりにも多くの粒子が事前に定義されているため、このメソッドですべての粒子を定義するのは厄介である。
 もしgeant4の粒子カテゴリーにおいてすべての粒子が欲しいならば、6つの便利なクラスがある。
-  > G4BosonConstructor  
-  G4LeptonConstructor  
-  G4MesonConstructor  
-  G4BarionConstructor  
-  G4IonConstructor  
-  G4ShortlivedConstructor  
+ > G4BosonConstructor  
+ > G4LeptonConstructor  
+ > G4MesonConstructor  
+ > G4BarionConstructor  
+ > G4IonConstructor  
+ > G4ShortlivedConstructor  
 
 ExN05PhysicsListの一例は以下のようになっている。
 
-> Example 2.15.  Construct all leptons.  
+```C++
+Example 2.15.  Construct all leptons.  
 void ExN05PhysicsList::ConstructLeptons()  
 {  
   // Construct all leptons  
   G4LeptonConstructor pConstructor;  
   pConstructor.ConstructParticle();  
 }  
-
+```
 ### 2.4.2 Range Cuts
 赤外発散を避けるため、いくつかの電磁気的な過程では二次粒子が生成されない閾値が求められる。
 この要求のため、ガンマ線、電子、ポジトロンは閾値を要求される。
@@ -112,7 +118,7 @@ void ExN05PhysicsList::ConstructLeptons()
 閾値のレンジは初期化段階でG4VUserPhysicsListクラスのSetCuts()メソッドを用いて定義しなければならない。
 5.5節ではそれらについて詳細を記述する。
 
-2.4.2.1 Setting the cuts
+#### 2.4.2.1 Setting the cuts
 閾値の生成はG4VUserPhysicsListクラスの仮想関数であるSetCuts()で定義される。
 粒子、物質のプロセスの生成は、SetCuts()の呼び出しにの下で実行される。G4RunManagerは通常のアプリケーションの一連の流れをアン利するものである。
 

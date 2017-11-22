@@ -54,7 +54,7 @@ delete G4AnalysisManager::Instance();
 
 ### 9.2.2. Files handling
 分析マネージャーは一度に位置ファイルしか取り扱うことができない。以下にbasicの例B4から抜粋されたファイルをオープニング、クロージングする一例を示す。
-```C++:exampleB4
+```C++
 #include "B4Analysis.hh"  
 void B4RunAction::BeginOfRunAction(const G4Run* run)  
 {  
@@ -78,3 +78,6 @@ G4bool OpenFile(const G4String& fileName = "");
 G4bool Write();
 G4bool CloseFile();
 ```
+ファイル名はOpenFile(const G4String&)の呼び出しの時かOpenFile()の呼び出しの前にSetFileName(const G4String &)関数を呼びだすことでも定義することができる。ファイルが開いている時や閉じていない時にファイル名を変えることはできない。もし拡張子が明示されていないならば、選択されたファイル形式に従って自動的に定められる。
+
+そのファイルは必要に応じて階層化されたディレクトリに構造化される。現在はひとつのディレクトリにひとつのヒストグラムあるいはnタプルがサポートされている。
