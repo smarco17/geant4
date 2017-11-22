@@ -3,18 +3,18 @@
 
 分析マネジャークラスはそれぞれのサポートされた出力形式で利用可能である。
 
-- G4CsvAnalysisManager
-- G4RootAnalysisManager
-- G4XmlAnalysisManager
+-   G4CsvAnalysisManager
+-   G4RootAnalysisManager
+-   G4XmlAnalysisManager
 
 使用の簡単のため、それぞれの分析マネジャーは全ての機能への完全なアクセスを提供する。そのためより複雑な設計を通してそれは実装されている。
 
 マネージャークラスはシングルトンで設計されている。ユーザーのコードは希望するマネージャーの唯一のインスタンスへのポインタへアクセスすることになるだろう。そのマネージャーはユーザーのコードから生成・消去する必要がある。すべてのオブジェクトは分析マネジャーを通じて生成され、マネージャーによって自動的に消去されている。g4tollsのオブジェクトと同様に分析マネージャーの具体的なタイプは専用のインクルードファイルをインクルードすることで選択された名前空間に隠されている。このことは以下の一般的な種類を通じ、ユーザーに全ての出力技術を使用することを可能にしている。
 
-- G4AnalysisManger: the public analysis interface
-- G4AnaH1[2,3]: one[two,three]-dimensional histogram
-- G4AnaP1[2]: one[two]-dimensional profile
-- G4Ntuple: ntuple
+-   G4AnalysisManger: the public analysis interface
+-   G4AnaH1\[2,3]: one\[two,three]-dimensional histogram
+-   G4AnaP1\[2]: one\[two]-dimensional profile
+-   G4Ntuple: ntuple
 
 G4AnalysisManagerの機能に加え、ヒストグラムの生成やそれらのプロパティを決めるためのGeant4UIコマンドも実装されている。
 
@@ -54,7 +54,7 @@ delete G4AnalysisManager::Instance();
 
 ### 9.2.2. Files handling
 分析マネージャーは一度に位置ファイルしか取り扱うことができない。以下にbasicの例B4から抜粋されたファイルをオープニング、クロージングする一例を示す。
-```C++
+```C++:exampleB4
 #include "B4Analysis.hh"  
 void B4RunAction::BeginOfRunAction(const G4Run* run)  
 {  
@@ -70,5 +70,11 @@ auto analysisManager = G4AnalysisanalysisManagerager::Instance();
 analysisManager->Write();  
 analysisManager->CloseFile();  
 }  
+```
 
+ファイルを取り扱うため次の関数が定義されている。
+```C++
+G4bool OpenFile(const G4String& fileName = "");
+G4bool Write();
+G4bool CloseFile();
 ```
