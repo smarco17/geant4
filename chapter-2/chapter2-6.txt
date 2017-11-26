@@ -1,6 +1,0 @@
-2.6.  How to Generate a Primary Event
-2.6.1.  Generating Primary Events
-G4VUserPrimaryGeneratorActionクラスは具体的なクラスを継承可能な必須のクラスである。
-具体的なクラスにおいてどのように一次イベントが生成されるかを記述しなければならない。
-一次粒子の実際の生成はG4VPrimaryGeneratorクラスの具体的なクラスによってされる。
-それを次の節で説明する。
