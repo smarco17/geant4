@@ -33,6 +33,7 @@
 #include "G4LogicalVolumeStore.hh"
 #include "G4LogicalVolume.hh"
 #include "G4Box.hh"
+#include "G4Sphere.hh"
 #include "G4RunManager.hh"
 #include "G4ParticleGun.hh"
 #include "G4ParticleTable.hh"
@@ -106,7 +107,8 @@ void B1PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
       = G4LogicalVolumeStore::GetInstance()->GetVolume("Envelope");
     if ( envLV ) fEnvelopeBox = dynamic_cast<G4Box*>(envLV->GetSolid());
   }
-
+  
+  /*
   if ( fEnvelopeBox ) {
     // 無事にボリュームをfetch出来たら、ボリュームのサイズを取得。
     // もしなければexceptionをraiseする。
@@ -122,6 +124,7 @@ void B1PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     G4Exception("B1PrimaryGeneratorAction::GeneratePrimaries()",
      "MyCode0002",JustWarning,msg);
   }
+  */
 
   /*
   G4double size = 0.8;

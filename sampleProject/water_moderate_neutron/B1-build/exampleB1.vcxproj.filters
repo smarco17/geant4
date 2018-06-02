@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\exampleB1.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\src\B1ActionInitialization.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\src\B1DetectorConstruction.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\src\B1EventAction.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\src\B1PrimaryGeneratorAction.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\src\B1RunAction.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\src\B1SteppingAction.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\include\B1ActionInitialization.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\include\B1DetectorConstruction.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\include\B1EventAction.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\include\B1PrimaryGeneratorAction.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\include\B1RunAction.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\include\B1SteppingAction.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\skhr1\Documents\Script\Github\geant4\sampleProject\water_moderate_neutron\B1\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3130A334-A8D3-3071-83A9-8A6383D4F271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{69A80694-6195-37A4-A830-E57D3389348D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
