@@ -1,5 +1,0 @@
-C:/Users/skhr1/Documents/Script/Github/geant4/sampleProject/detect_xray_emission/B1-build/CMakeFiles/exampleB1.dir
-C:/Users/skhr1/Documents/Script/Github/geant4/sampleProject/detect_xray_emission/B1-build/CMakeFiles/INSTALL.dir
-C:/Users/skhr1/Documents/Script/Github/geant4/sampleProject/detect_xray_emission/B1-build/CMakeFiles/B1.dir
-C:/Users/skhr1/Documents/Script/Github/geant4/sampleProject/detect_xray_emission/B1-build/CMakeFiles/ALL_BUILD.dir
-C:/Users/skhr1/Documents/Script/Github/geant4/sampleProject/detect_xray_emission/B1-build/CMakeFiles/ZERO_CHECK.dir
