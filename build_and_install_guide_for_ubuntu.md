@@ -23,7 +23,7 @@ Geant4のUbuntuへのインストール方法の解説です。
 ...
 >sudo apt-get upgrade
 ...
->sudo cmake expat libexpat1-dev xorg-dev freeglut3-dev
+>sudo apt-get install cmake expat libexpat1-dev xorg-dev freeglut3-dev
 ```
 
 1. ソースファイルを[DL](http://geant4.web.cern.ch/support/download) Linuxの場合は拡張子が.tar.gzで終わるもの。  
