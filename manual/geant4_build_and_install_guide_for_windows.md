@@ -134,3 +134,7 @@ C:/Users/YourUsername/Geant4/geant4_10_03-bu>ild
 
 でOPENGLが起動しcmdがIdle状態になればインストールが正しくできている。　　
 /run/beamOn 等のコマンドを打ち正しく動作されているかを確認する。
+
+
+- 追記  
+  現在のGeant4はWindowsにおいてマルチスレッドでのRunに対応していないので、本格的にシミュレーションを行うにはおすすめできない。Windows10, ver.1607からはWindows Subsytem for Linux(WSL)が実装され、Windows上でネイティブなLinuxが使用できるようになったため、こちらの方がおすすめ。WSL(Ubuntu)へのGeant4のインストール方法は[こちら]()

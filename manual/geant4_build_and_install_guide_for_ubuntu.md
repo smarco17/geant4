@@ -94,4 +94,15 @@ Idle>/run/beamON 100
 ...
 ```
 
+## 追記
+
+- cmakeでインストール時に指定しておきたいおすすめオプション
+  - GEANT4_BUILD_MULTITHREADED=ON  
+    本格的にシミュレーションを行うならば、ほぼ必須のオプション。Unix系限定。CPUのスレッド数だけRunを並列して動作させることができる。
+  - GEANT4_USE_QT=ON  
+    描写ソフトをQTに指定する。QTの場合、GUIでマクロコマンドを指定できたり、マウスでジオメトリを回転、移動させたりして確認することができる。
+  - GEANT4_USE_GDML=ON
+    Geometry Description Markup Language(GDML)をGeant4内で使用するためのオプション。XERCES-Cパッケージが必要。GDMLはHTMLやXMLのようなに構造を記述していく言語であり、複雑なジオメトリを記述する際に使われる。またSTL, STEP等のCADファイルをGeant4へインポートする際にも使用される。その際は[CADMESH]()というものを使うやり方が一番簡単である。
+  - GEANT4_INSTALL_DATA_TIMEOUT=xxx
+    xxxは時間(単位は[s])。デフォルトでは1500[s]。回線が遅いときはよくビルドに失敗するため、長くしておくと無駄な時間を取られなくて済む。
 
