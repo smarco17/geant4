@@ -1,9 +1,24 @@
 # template
+  
+  ***
+  使用方法
 
----
+  ``` shell
+  > mkdir TEMPLATE-build
+  > cd TEMPLATE-build
+  > cmake -DGeant4_DIR=/xxx/xxx/xxx ../TEMPLATE
+  ...
+  > make -jN
+  ...
+  > ./template run.mac
+  ...
 
-Geant4のテンプレート   
-WorldにGeantino(輸送のみを行い、相互作用をしない仮想粒子)を打ち込むだけのプログラム  
+  or
+  
+  > ./template
+  Idle> /run/beamOn 10
+  ...
+  
+  ```
 
----
-
+  ***
