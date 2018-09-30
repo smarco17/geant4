@@ -2,6 +2,7 @@
 
 *** 
 Geant4のUbuntuへのインストール方法の解説です。  
+(Unix系ならおおよそ同じ操作でインストール可能)  
 あくまで最低限使用できるような設定となっているので、詳しくはCernの提供する[サイト](http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/InstallationGuide/html/gettingstarted.html)を参考にしてください。  
 （GDML, qt等々他にも様々なツールが使えます。）
 *** 
