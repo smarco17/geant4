@@ -1,4 +1,0 @@
-# /run/numberOfWorkers 4
-
-/run/initialize
-/run/beamOn 100
