@@ -7,7 +7,7 @@ Geant4のUbuntuへのインストール方法の解説です。
 （GDML, qt等々他にも様々なツールが使えます。）
 ***
 
-### 環境  
+## 環境  
 
 - ubuntu 16.04 LTS  
 - geant4.10.03.p03
@@ -71,8 +71,8 @@ Geant4のUbuntuへのインストール方法の解説です。
    （.bashrcはterminalの起動ごとに実行されるスクリプト、恐らく/home/user/.bashrcにあるはずだが、なければ作成）
 
    ```sh:.bashrc
-   source /home/user/Downloads/geant4.10.03.p03-install/bin/geant4.sh 
-   source /home/user/Downloads/geant4.10.03.p03-install/share/Geant4-10.3.3/geant4make/geant4make.sh 
+   source /home/user/Downloads/geant4.10.03.p03-install/bin/geant4.sh
+   source /home/user/Downloads/geant4.10.03.p03-install/share/Geant4-10.3.3/geant4make/geant4make.sh
    ```
 
 5. サンプルプログラムの実行
