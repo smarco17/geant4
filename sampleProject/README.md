@@ -2,6 +2,14 @@
 
 ## detect_xray_emission
 
+## import_gdml
+
+   ***
+   Geometry Description Markup Language(GDML)によってジオメトリを記述し、それをGeant4のシミュレーションの世界へ
+   組み込むためプログラム。
+   templateプログラムを基本としているため、相互作用は行わないが、正しく輸送が行われていることを確認することは重要である。
+   ***
+
 ## template
 
    ***
