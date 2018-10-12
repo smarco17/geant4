@@ -1,4 +1,4 @@
-# template
+# import_gdml
 
   ***
   このファイルと同じ階層にあるsolids.gdmlがGDML形式のファイルでジオメトリが記述されている。
