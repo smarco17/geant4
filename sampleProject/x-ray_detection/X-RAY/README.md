@@ -4,20 +4,24 @@
   使用方法
 
   ``` shell
-  > mkdir TEMPLATE-build
-  > cd TEMPLATE-build
-  > cmake -DGeant4_DIR=/xxx/xxx/xxx ../TEMPLATE
+  > mkdir X-RAY-build
+  > cd X-RAY-build
+  > cmake -DGeant4_DIR=/xxx/xxx/xxx ../X-RAY
   ...
   > make -jN
   ...
-  > ./template run.mac
+  > ./X-RAY run.mac
   ...
 
   or
   
-  > ./template
-  Idle> /run/beamOn 10
+  > ./X-RAY
+  Idle> /run/beamOn 10000
   ...
+
+  and
+
+  > root -l data.C
   
   ```
 
