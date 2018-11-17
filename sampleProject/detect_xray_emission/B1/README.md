@@ -1,1 +1,0 @@
-# detect_xray_emission

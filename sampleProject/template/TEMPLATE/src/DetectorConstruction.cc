@@ -6,8 +6,6 @@
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4SystemOfUnits.hh"
-
-// add
 #include "globals.hh"
 
 DetectorConstruction::DetectorConstruction():G4VUserDetectorConstruction(){}
@@ -15,8 +13,6 @@ DetectorConstruction::DetectorConstruction():G4VUserDetectorConstruction(){}
 DetectorConstruction::~DetectorConstruction(){}
 
 G4VPhysicalVolume* DetectorConstruction::Construct(){
-  // 物質マネージャー
-  //
   G4NistManager* nist = G4NistManager::Instance();
   G4Material* worldMat = nist->FindOrBuildMaterial("G4_AIR");
 

@@ -2,6 +2,10 @@
 #include "PhysicsList.hh"
 #include "ActionInitialization.hh"
 
+#include "G4EmStandardPhysics.hh"
+#include "QBBC.hh"
+#include "G4VModularPhysicsList.hh"
+
 #ifdef G4MULTITHREADED
 #include "G4MTRunManager.hh"
 #else

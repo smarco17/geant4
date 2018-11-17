@@ -12,12 +12,10 @@ RunAction::RunAction():G4UserRunAction(){}
 RunAction::~RunAction(){}
 
 void RunAction::BeginOfRunAction(const G4Run*){
-  // inform the runManager to save random number seed
   G4RunManager::GetRunManager()->SetRandomNumberStore(false);
 }
 
 void RunAction::EndOfRunAction(const G4Run* run){
-  // Run conditions
   const PrimaryGeneratorAction* generatorAction
   = static_cast<const PrimaryGeneratorAction*>(G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
 
@@ -30,7 +28,6 @@ void RunAction::EndOfRunAction(const G4Run* run){
     runCondition += G4BestUnit(particleEnergy, "Energy");
   }
 
-  // Print
   if (IsMaster()) G4cout << G4endl << "--------------------End of Global Run-----------------------";
   else G4cout << G4endl << "--------------------End of Local Run------------------------";
 }
