@@ -34,7 +34,7 @@ G4bool TrackerSD::ProcessHits(G4Step* aStep, G4TouchableHistory* history){
   newHit->SetPos(aStep->GetPostStepPoint()->GetPosition());
   // newHit->Print();
 
-  fHitsCollection->insert(newHit);
+  // fHitsCollection->insert(newHit);
 
   return true;
 }
