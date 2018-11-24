@@ -62,8 +62,7 @@ typedef G4THitsCollection<TrackerHit> TrackerHitsCollection;
 extern G4ThreadLocal G4Allocator<TrackerHit>* TrackerHitAllocator;
 
 inline void* TrackerHit::operator new(size_t){
-  if(!TrackerHitAllocator)
-      TrackerHitAllocator = new G4Allocator<TrackerHit>;
+  if(!TrackerHitAllocator) TrackerHitAllocator = new G4Allocator<TrackerHit>;
   return (void *) TrackerHitAllocator->MallocSingle();
 }
 

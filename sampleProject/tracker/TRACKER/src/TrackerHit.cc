@@ -10,7 +10,7 @@
 G4ThreadLocal G4Allocator<TrackerHit>* TrackerHitAllocator=0;
 
 TrackerHit::TrackerHit() : G4VHit(),
-fTrackID(-1), fParentID(-1), fParticleName(""), fCopyNo(-1), fEdep(0.), fEkinPost(0.),
+fTrackID(-1), fParentID(-1), fParticleName(""), fCopyNo(-1), fEdep(0.), fEkinPre(0), fEkinPost(0.),
 fPosPre(G4ThreeVector()), fPosPost(G4ThreeVector()), fProcessName(""){}
 
 TrackerHit::~TrackerHit(){}

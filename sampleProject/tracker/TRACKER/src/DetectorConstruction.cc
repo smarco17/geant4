@@ -67,7 +67,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes(){
   G4Tubs* trackerS = new G4Tubs("Tracker", 0, 1*cm, 3*mm/2, 0.*deg, 360.*deg);
   G4LogicalVolume* trackerLV = new G4LogicalVolume(trackerS, fSi, "Tracker");  
   new G4PVPlacement(rot,
-                    G4ThreeVector(1.*cm, 0, 1.*cm),
+                    G4ThreeVector(2.*cm, 0, 2.*cm),
                     trackerLV,
                     "Tracker",
                     worldLV,
